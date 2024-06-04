@@ -3,6 +3,6 @@ output "container_password" {
   sensitive = true
 }
 output "container_private_key" {
-  value     = tls_private_key.ubuntu_container_key.private_key_pem
+  value     = tls_private_key.container_key.private_key_pem
   sensitive = true
 }
