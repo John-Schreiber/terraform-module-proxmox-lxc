@@ -33,6 +33,9 @@ resource "proxmox_virtual_environment_container" "proxmox_lxc" {
       }
     }
     user_account {
+       keys = [
+        trimspace(tls_private_key.container_key.public_key_openssh)
+      ]
       password = random_password.lxc_password.result
     }
   }
@@ -82,4 +85,8 @@ resource "random_password" "lxc_password" {
   length           = var.password_length
   override_special = "_%@"
   special          = true
+}
+resource "tls_private_key" "container_key" {
+  algorithm = "Ed25519"
+
 }
