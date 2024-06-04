@@ -87,6 +87,6 @@ resource "random_password" "lxc_password" {
   special          = true
 }
 resource "tls_private_key" "container_key" {
-  algorithm = "Ed25519"
+  algorithm = "ED25519"
 
 }
