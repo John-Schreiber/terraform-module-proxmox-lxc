@@ -52,7 +52,7 @@ resource "proxmox_virtual_environment_container" "proxmox_lxc" {
     size         = var.disk_size
   }
   network_interface {
-    name = "veth0"
+    name = "var.network"
   }
   operating_system {
     template_file_id = local.container_template
