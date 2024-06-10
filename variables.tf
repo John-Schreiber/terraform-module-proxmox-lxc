@@ -99,5 +99,5 @@ variable "migrate_template_file" {
 variable "network" {
   description = "Network to attach to"
   type        = string
-  default     = int
+  default     = "int"
 }
