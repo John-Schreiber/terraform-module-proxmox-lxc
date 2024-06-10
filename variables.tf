@@ -95,4 +95,8 @@ variable "migrate_template_file" {
   description = "Set to false to prevent re-creating the underlying proxmox_virtual_environment_file."
   type        = bool
   default     = true
+}variable "network" {
+  description = "Network to attach to"
+  type        = string
+  default     = int
 }
