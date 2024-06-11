@@ -101,3 +101,7 @@ variable "network" {
   type        = string
   default     = "int"
 }
+variable "ssh_pub_key"{
+  description = "Public key for ssh auth"
+  type = string
+}

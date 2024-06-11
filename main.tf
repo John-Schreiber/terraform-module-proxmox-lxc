@@ -38,7 +38,7 @@ resource "proxmox_virtual_environment_container" "proxmox_lxc" {
     }
     user_account {
       keys = [
-        trimspace(tls_private_key.container_key.public_key_openssh)
+        var.ssh_pub_key
       ]
       password = random_password.lxc_password.result
     }
@@ -91,22 +91,11 @@ resource "random_password" "lxc_password" {
   override_special = "_%@"
   special          = true
 }
-resource "tls_private_key" "container_key" {
-  algorithm = "ED25519"
 
-}
 resource "ansible_host" "host" {
-  name   = "${var.node_name}.servers.rosemontmarket.com"
+  name   = "${var.container_name}.servers.rosemontmarket.com"
   groups = ["OpenTofu"]
-  variables = {
-    key-file = pathexpand("~/.ssh/${var.container_name}.pem")
 
-  }
 }
 
-resource "local_sensitive_file" "pem_file" {
-  filename             = pathexpand("~/.ssh/${var.container_name}.pem")
-  file_permission      = "600"
-  directory_permission = "700"
-  content              = tls_private_key.container_key.private_key_pem
-}
+
