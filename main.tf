@@ -93,8 +93,9 @@ resource "random_password" "lxc_password" {
 }
 
 resource "ansible_host" "host" {
-  name   = "${var.container_name}.servers.rosemontmarket.com"
-  groups = ["OpenTofu"]
+  name      = "${var.container_name}.servers.rosemontmarket.com"
+  groups    = ["OpenTofu"]
+  variables = { ansible_user = "root" }
 
 }
 
