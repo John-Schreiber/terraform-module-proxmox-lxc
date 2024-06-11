@@ -56,7 +56,8 @@ resource "proxmox_virtual_environment_container" "proxmox_lxc" {
     size         = var.disk_size
   }
   network_interface {
-    name = var.network
+    name   = "eth0"
+    bridge = var.network
   }
   operating_system {
     template_file_id = local.container_template
