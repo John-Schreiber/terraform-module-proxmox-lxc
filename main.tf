@@ -96,10 +96,10 @@ resource "ansible_host" "host" {
   name      = "${var.container_name}.servers.rosemontmarket.com"
   groups    = ["OpenTofu"]
   variables = { ansible_user = "root" }
-  provisioner "local-exec" { command = "ssh-keygen -H ${var.container_name}.servers.rosemontmarket.com >>~/.ssh/known_hosts" }
+  provisioner "local-exec" { command = "ssh-keygen -H ${self.name} >>~/.ssh/known_hosts" }
   provisioner "local-exec" {
     when    = destroy
-    command = "ssh-keygen -R ${var.container_name}.servers.rosemontmarket.com "
+    command = "ssh-keygen -R ${self.name}"
   }
 }
 
