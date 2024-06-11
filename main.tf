@@ -8,6 +8,10 @@ terraform {
       source  = "hashicorp/random"
       version = "3.6.0"
     }
+    ansible = {
+      version = "~> 1.3.0"
+      source  = "ansible/ansible"
+    }
   }
 }
 
